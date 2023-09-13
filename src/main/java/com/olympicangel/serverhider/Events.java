@@ -9,12 +9,15 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 
 import java.io.File;
+import java.net.InetAddress;
 import java.util.Iterator;
 
 public class Events implements Listener {
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onPing(ServerListPingEvent e){
-        String ip = e.getAddress().getHostAddress();
+        String ip = extractIp(e.getAddress());
+        if(ip.equals(""))
+            return;
         boolean whitelisted = main.ref.getConfig().contains("address."+ip);
         if(!whitelisted){ //if not whitelisted
             e.setMotd("A Minecraft Server"); //set default  motd
@@ -39,9 +42,17 @@ public class Events implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e){
-        String ip = e.getPlayer().getAddress().getAddress().getHostAddress();
+        String ip = extractIp(e.getPlayer().getAddress().getAddress());
+        if(ip.equals(""))
+            return;
         main.ref.getConfig().set("address." + ip,e.getPlayer().getName());
         main.ref.saveConfig();
+    }
+
+    private String extractIp(InetAddress e){
+        if(e == null)
+            return "";
+        return e.getHostAddress().replaceAll(".","/");
     }
 }
 
