@@ -29,9 +29,8 @@ public class Events implements Listener {
         }
         else {
             //load correct logo
-            File wrongPath = new File("./server-icon2.png");
             try {
-                e.setServerIcon(Bukkit.loadServerIcon(wrongPath));
+                e.setServerIcon(Bukkit.loadServerIcon(main.iconPath));
             } catch (Exception ex) {
             }
         }
