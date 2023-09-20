@@ -52,7 +52,7 @@ public class Events implements Listener {
     private String extractIp(InetAddress e){
         if(e == null)
             return "";
-        return e.getHostAddress().replaceAll(".","/");
+        return e.getHostAddress().replaceAll("\\.","/");
     }
 }
 

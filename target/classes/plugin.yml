@@ -4,3 +4,4 @@ main: com.olympicangel.serverhider.main
 api-version: 1.20
 authors: [ OlympicAngel ]
 description: hides a server from scanners
+load: STARTUP
