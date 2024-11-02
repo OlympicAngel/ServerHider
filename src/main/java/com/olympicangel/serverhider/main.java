@@ -9,14 +9,14 @@ import java.io.File;
 public final class main extends JavaPlugin {
 
     public static main ref;
-    public static File iconPath = new File("./server-icon2.png");
+    public static File iconPath;
 
     @Override
     public void onEnable() {
         main.ref = this;
         Bukkit.getPluginManager().registerEvents(new Events(),this);
 
-        File iconPath = new File("./server-icon.png");
+        iconPath = new File("./server-icon.png");
         //if default icon exists rename it to correct way
         if(iconPath.exists())
             iconPath.renameTo(this.iconPath);
