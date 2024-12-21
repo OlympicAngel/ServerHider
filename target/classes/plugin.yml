@@ -1,5 +1,5 @@
 name: ServerHider
-version: '1.0'
+version: '1.2.1'
 main: com.olympicangel.serverhider.main
 api-version: "1.16"
 authors: [ OlympicAngel ]
